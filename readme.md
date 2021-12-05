@@ -1,6 +1,6 @@
 # Hangman
 
-Hangman is a game written in Python. For ENG version random word API is used. Used libraries?
+Hangman is a word guessing game written in Python. For ENG version random word API is used. Used libraries?
 
 ## Initating
 

@@ -24,9 +24,7 @@ class Game:
         
 
     def get_input(self):
-        # " " -> ""
-        # " hi" -> "hi"
-        # " hi " -> "hi"
+
 # We input letters or words and delete if there is space we delete it with strip()
         guess = input("Please try and guess a letter: ").upper().strip()
         if len(guess) == 0:
