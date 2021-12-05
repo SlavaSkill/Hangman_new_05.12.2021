@@ -13,7 +13,7 @@ class Game:
         Performs operation X
         
         """
-        self.word = word
+        self.word = word.upper()
         self.word_progress = list(len(word) * "-")
         self.lives = 6
         self.word_is_guessed = False

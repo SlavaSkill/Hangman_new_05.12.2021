@@ -6,7 +6,7 @@ import requests
 # Player must choose a language of the words that will be guessed.
 # Only LV or ENG are valid options, otherwise an error message will be printed.
 while True:
-    language = input("Please, choose language (LV/ENG) : ").upper()
+    language = input("Please, choose language (LV/ENG): ").upper()
 
     if language == "LV" or language == "ENG":
         break
@@ -77,20 +77,22 @@ if language == "LV":
             break
 
 # If ENG option is selected, get words in english from API.
+# User is asked how many rounds would they like to play which also defines 
+# how many words are retrived from the API.
 elif language == "ENG" :
     
-    url = 'https://random-word-api.herokuapp.com/word?number=1'
-    
     while True:
-        response = requests.get(url)
-        json_response = response.json()
-        word = json_response[0].upper()
+        rounds = input("How many rounds would You like to play? ")
+        if not rounds.isdigit() or int(rounds) < 1:
+            print("Please enter a number higher than 0!")
+            continue
+        else:
+            break
+    
+    url = f"https://random-word-api.herokuapp.com/word?number={rounds}"
+    response = requests.get(url)
+    json_response = response.json()
         
+    for word in json_response:
         game = Game(word)
         game.play()
-        
-        play_again = input("\nWould you like to play again? (y/n): ")
-        if play_again == "y": 
-            continue
-        else: 
-            break
