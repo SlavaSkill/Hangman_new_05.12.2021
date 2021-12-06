@@ -1,10 +1,9 @@
-# TODO: Aktivizēt virtual env, pip install pytest, pip freeze > requirements.txt
 import pytest
 from gameplay.game import Game
 
     
-# tests kur pārbauda vai draw_hangman atgriež listu
-# tests kur pārbauda draw_hangman atgrieztās vērtības attiecīgi no dzivību daudzuma
+# Test that checks if draw_hangman return list
+# Test that checks draw_hangman returned values depending from lives amount
     
 
 def test_reduce_lives():
@@ -32,7 +31,7 @@ def test_draw_hangman():
         "_____________"
     ]
 
-    # Notestēt hangman zīmējumu pie 4, 2, 0 dzīvībām
+    # Test hangman picture on 4 lives
     game.lives = 4
     hangman_drawing = game.draw_hangman()
     assert hangman_drawing == [
