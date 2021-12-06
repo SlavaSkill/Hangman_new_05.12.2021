@@ -3,14 +3,14 @@ class Game:
 
     Provides building blocks of the Hangman game.
 
-    Attributes:
-    Typical usage example:
+    Attributes
+    Typical usage example
 
     """
     
     def __init__(self, word):
         """ 
-        Performs operation X
+        Initializes the attributes
         
         """
         self.word = word.upper()
@@ -20,8 +20,10 @@ class Game:
         self.guessed_letters = set()
         self.missed_letters = set()
         self.missed_words = set()
-        self.user_name = input("Please, enter your name: ")
         
+    def reduce_lives(self):
+        self.lives -= 1
+
 
     def get_input(self):
 
@@ -35,8 +37,13 @@ class Game:
         return guess
 
     def play(self):
+        self.user_name = input("Please, enter your name: ")
+        
         while self.lives > 0 and self.word_is_guessed == False:
+            print()
+            self.print_list(self.draw_hangman())
             self.print_status()
+            print()
             
             try:
                 guess = self.get_input()
@@ -84,19 +91,15 @@ class Game:
         
         self.print_game_over_message()
         
-# Function that shows information to user            
+    # Function that shows information to user            
     def print_status(self):
-        print()
-        self.draw_hangman()
         print(f"Word: {''.join(self.word_progress)}")
         print("Word leght:", len(self.word))
         print("Lives: ", self.lives * "♥")
         print(f"Missed letters: {', '.join(self.missed_letters)}")
         print(f"Missed words: {', '.join(self.missed_words)}")
-        print()
         
     def print_game_over_message(self):
-
         print("\nGame over!")
         if self.word_is_guessed:
             print(" ░░░░░░░░░░░░░░░░░░░░▄████▄░░░░░░░░░░░░░░\n",
@@ -120,71 +123,77 @@ class Game:
             print(f"Congrats {self.user_name} You WON! Word: {self.word}")
             
         else:
-            print(
-                "     ______  \n",
-                "   |      0  \n",
-                "   |     /█\ \n",
-                "   |      █  \n",
-                "   |     / \ \n",
-                "___________\n"
-            )
-
+            self.print_list(self.draw_hangman())
             print(f"You Lost {self.user_name}! Correct word: {self.word}")
     
     # Pictures of hangman            
     def draw_hangman(self):
         if self.lives == 6:
-            print(
-                "           \n",
-                "           \n",
-                "           \n",
-                "           \n",
-                "           \n",
-                "___________\n"
-            )
+            return [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "_____________"
+            ]
       
         elif self.lives == 5:
-            print(
-                "    _      \n",
-                "   |       \n",
-                "   |       \n",
-                "   |       \n",
-                "   |       \n",
-                "___________\n"
-            )
+            return [
+                "    _",
+                "   |",
+                "   |",
+                "   |",
+                "   |",
+                "_____________"
+            ]
         elif self.lives == 4:
-            print(
-                "     ______  \n",
-                "   |       \n",
-                "   |       \n",
-                "   |       \n",
-                "   |       \n",
-                "___________\n"
-            )
+            return [
+                "     ______",
+                "   |",
+                "   |",
+                "   |",
+                "   |",
+                "_____________"
+            ]
         elif self.lives == 3:
-            print(
-                "     ______  \n",
-                "   |      0  \n",
-                "   |       \n",
-                "   |       \n",
-                "   |       \n",
-                "___________\n"
-            )
+            return [
+                "     ______",
+                "   |      0",
+                "   |",
+                "   |",
+                "   |",
+                "_____________"
+            ]
         elif self.lives == 2:
-            print(
-                "     ______  \n",
-                "   |      0  \n",
-                "   |      █  \n",
-                "   |      █  \n",
-                "   |       \n",
-                "___________\n"
-            )
+            return [
+                "     ______",
+                "   |      0",
+                "   |      █",
+                "   |      █",
+                "   |",
+                "_____________"
+            ]
         elif self.lives == 1:
-            print(
-                "     ______  \n",
-                "   |      0  \n",
-                "   |     /█\ \n",
-                "   |      █  \n",
-                "   |       \n",
-                "___________\n"
-            )
+            return [
+                "     ______",
+                "   |      0",
+                "   |     /█\ ",
+                "   |      █",
+                "   |",
+                "_____________"
+            ]
+        elif self.lives == 0:
+            return [
+                "     ______",
+                "   |      0",
+                "   |     /█\ ",
+                "   |      █",
+                "   |     / \ ",
+                "_____________"
+            ]
+    # take list as argument and print every list element in new line            
+    def print_list(self, list_to_print):
+        # make it to str
+        list_of_strings = map(str, list_to_print)
+        print("\n".join(list_of_strings))
