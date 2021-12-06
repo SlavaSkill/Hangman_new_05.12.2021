@@ -4,7 +4,7 @@ Hangman is a word guessing game written in Python. For ENG version random word A
 
 ## Initating
 
-To start the game open Command Prompt?
+To start the game open Command Prompt
 
 
 ## Required files
