@@ -96,16 +96,9 @@ elif language == "ENG" :
     for word in json_response:
         game = Game(word)
         game.play()
-<<<<<<< HEAD
-        
+### Play again
         play_again = input("\nWould you like to play again? (y/n): ")
         if play_again == "y": 
             continue
         else: 
             break
-# git add . 
-# git status 
-# git commit -m "Palaboju API"
-# git push main
-=======
->>>>>>> a817b86ade4bb393d8b2bcbe55ab5373fcc0e168
