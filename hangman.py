@@ -94,3 +94,7 @@ elif language == "ENG" :
             continue
         else: 
             break
+# git add . 
+# git status 
+# git commit -m "Palaboju API"
+# git push main
