@@ -30,7 +30,7 @@ class Game:
 # We input letters or words and delete if there is space we delete it with strip()
         guess = input("Please try and guess a letter: ").upper().strip()
         if len(guess) == 0:
-            raise EOFError("Please, enter at least 1 character!")
+            raise EOFError("Please, enter at least 1 letter!")
         elif not guess.isalpha():
             raise TypeError("Please, use only letters!")
 
