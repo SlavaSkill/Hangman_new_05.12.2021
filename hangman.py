@@ -6,7 +6,7 @@ import requests
 # Player must choose a language of the words that will be guessed.
 # Only LV or ENG are valid options, otherwise an error message will be printed.
 while True:
-    language = input("Please, choose language (LV/ENG): ").upper()
+    language = input("Please, choose words language (LV/ENG): ").upper()
 
     if language == "LV" or language == "ENG":
         break
